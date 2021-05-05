@@ -1,5 +1,6 @@
 import format from 'date-fns/format'
 import parseISO from 'date-fns/parseISO'
+import { CopyToClipboardText } from '../../../components/CopyToClipboardText'
 
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -45,8 +46,12 @@ export const ContactsTable = ({ data }) => {
                 <Typography>{format(parseISO(contact.dob.date), 'MM/dd/yyyy')}</Typography>
                 <Typography>{contact.dob.age} years</Typography>
               </TableCell>
-              <TableCell>{contact.phone}</TableCell>
-              <TableCell>{contact.email}</TableCell>
+              <TableCell>
+              <CopyToClipboardText text={contact.email}/>
+              </TableCell>
+              <TableCell>
+                <CopyToClipboardText text={contact.phone}/>
+              </TableCell>
               <TableCell>6</TableCell>
               <TableCell>7</TableCell>
             </TableRow>
