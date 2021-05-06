@@ -1,6 +1,7 @@
 import format from 'date-fns/format'
 import parseISO from 'date-fns/parseISO'
 import { CopyToClipboardText } from '../../../components/CopyToClipboardText'
+import {NATIONALYTYES_HUMAN_NAME} from '../../../constants/nationaly'
 
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -52,8 +53,13 @@ export const ContactsTable = ({ data }) => {
               <TableCell>
                 <CopyToClipboardText text={contact.phone}/>
               </TableCell>
-              <TableCell>6</TableCell>
-              <TableCell>7</TableCell>
+              <TableCell>
+                <Typography>{contact.location.country}</Typography>
+                <Typography>{contact.location.city}, {contact.location.street.name}  {contact.location.street.number}</Typography>
+                </TableCell>
+              <TableCell>
+                {NATIONALYTYES_HUMAN_NAME[contact.nat]}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
